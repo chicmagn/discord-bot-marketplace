@@ -2,6 +2,10 @@ export const botCategoryList = [
     'Verification', 'Moderator', 'Music', 'Fun', 'Gaming'
 ]
 
+export const emojiCategoryList = [
+    'Pepe', 'Gaming', 'Anime', 'Blobs', 'Meme', 'Happy', 'Crying', 'Red'
+]
+
 export const bots = [
     {
         idx: 1,
@@ -99,4 +103,77 @@ export const bots = [
         description: 'Ostra\'s robust moderation system makes community management a breeze. Take control of your server and leverage the power of Ostra today.',
         votes: ''
     }
+]
+
+export const emojis = [
+    {
+        idx: 0, 
+        url: 'https://cdn.discordapp.com/emojis/838940182069772288.gif',
+        usage: ':yayblobhyper:',
+        tag: 'Anime'
+    },
+    {
+        idx: 1, 
+        url: 'https://cdn.discordapp.com/emojis/830199011197190155.gif',
+        usage: ':PepeNoHappy:',
+        tag: 'Pepe'
+    },
+    {
+        idx: 2, 
+        url: 'https://cdn.discordapp.com/emojis/869959843065249832.gif',
+        usage: ':E_AnimeSadCry:',
+        tag: 'Anime'
+    }
+    ,
+    {
+        idx: 3, 
+        url: 'https://cdn.discordapp.com/emojis/750917758388142110.gif',
+        usage: ':btCheckPurple:',
+        tag: 'Anime'
+    }
+    ,
+    {
+        idx: 4, 
+        url: 'https://cdn.discordapp.com/emojis/659858424623792128.gif',
+        usage: ':Jotaro_Dancing:',
+        tag: 'Gaming'
+    }
+    ,
+    {
+        idx: 5, 
+        url: 'https://cdn.discordapp.com/emojis/496030847338545152.gif',
+        usage: ':blobcatspit:',
+        tag: 'Happy'
+    },
+    {
+        idx: 6, 
+        url: 'https://cdn.discordapp.com/emojis/578814484072628234.png',
+        usage: ':blobcatdab:',
+        tag: 'Gaming'
+    },
+    {
+        idx: 7, 
+        url: 'https://cdn.discordapp.com/emojis/812227043206496286.gif',
+        usage: ':f_rosehaha:',
+        tag: 'Red'
+    },
+    {
+        idx: 8, 
+        url: 'https://cdn.discordapp.com/emojis/815267331180593184.gif',
+        usage: ':gr_girlyay01:',
+        tag: 'Happy'
+    },
+    {
+        idx: 9, 
+        url: 'https://cdn.discordapp.com/emojis/706656863118164039.png',
+        usage: ':muhahaha_funny_pirate_heehhoo:',
+        tag: 'Anime'
+    },
+    {
+        idx: 10, 
+        url: 'https://cdn.discordapp.com/emojis/814239489248460800.gif',
+        usage: ':juicewrldhaha:',
+        tag: 'Anime'
+    }
+
 ]

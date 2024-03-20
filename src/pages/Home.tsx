@@ -1,11 +1,11 @@
-import { Center, Container, Image, VStack, Text, InputGroup, InputLeftElement, Input, InputRightElement, CheckboxIcon, HStack, Tag } from "@chakra-ui/react"
+import { Center, Container, Image, VStack, Text, InputGroup, InputLeftElement, Input, InputRightElement, CheckboxIcon, HStack, Tag, Box } from "@chakra-ui/react"
 import discordLogo from '/discord.svg'
 import { botCategoryList } from "../common/mock"
 import BotList from "../components/BotList"
 import ServerList from "../components/ServerList"
 const Home = () => {
     return (
-        <Container maxW='full'>
+        <Box maxW='full' className="homePage" p='1.5rem' >
             <VStack>
                 <Center p={8}>
                     <VStack spacing='2rem'>
@@ -38,7 +38,7 @@ const Home = () => {
                 <Text fontSize='4xl' color='white'>Largest Servers</Text>
                 <ServerList search={'top'}/>
             </VStack>
-        </Container>
+        </Box>
     )
 }
 

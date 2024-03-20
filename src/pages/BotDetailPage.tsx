@@ -1,10 +1,10 @@
-import { Container, Heading } from "@chakra-ui/react"
+import { Box, Container, Heading } from "@chakra-ui/react"
 
 const BotDetailPage = () => {
     return (
-        <Container>
+        <Box maxW='full' p='1.5rem' >
             <Heading color='white'> Coming Soon</Heading>
-        </Container>
+        </Box>
     )
 }
 

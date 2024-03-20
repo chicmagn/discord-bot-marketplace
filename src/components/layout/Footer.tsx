@@ -1,7 +1,7 @@
-import { Container, SimpleGrid, VStack, Text } from "@chakra-ui/react"
+import { SimpleGrid, VStack, Text, Box } from "@chakra-ui/react"
 const Footer = () => {
     return (
-        <Container className='footer' maxW='8xl' h='5rem' bg='discord.900' p={10}>
+        <Box className='footer' maxW='full' h='5rem' bg='discord.600' p={10}>
             <SimpleGrid columns={4}>
                 <VStack>
                     <Text color='white'>Resources</Text>
@@ -16,7 +16,7 @@ const Footer = () => {
                     <Text color='white'>Contact</Text>
                 </VStack>
             </SimpleGrid>
-        </Container>
+        </Box>
     )
 
 }

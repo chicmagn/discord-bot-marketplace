@@ -6,7 +6,7 @@ import githubLogo from '/github.svg'
 const Header = ()=> {
 
     return (
-        <Container className='header' maxW='full' h='5.5rem' bg='discord.900' p='1.5rem'>
+        <Container className='header' maxW='full' h='5.5rem' bg='discord.700' p='1.5rem' boxShadow='base'>
             <Flex>
                 <HStack>
                     <Image src={communeLogo} w='2rem' h='2rem'></Image>

@@ -13,7 +13,7 @@ const BotCard = (props: any) => {
     };
 
     return (
-        <Card maxW='xs' variant='outline' bg='discord.900' boxShadow={boxShadowStyle.boxShadow}>
+        <Card maxW='xs' variant='outline' bg='discord.700' boxShadow={boxShadowStyle.boxShadow}>
             <CardBody padding='0px'>
                 <Image
                     src={bot.bgUrl}

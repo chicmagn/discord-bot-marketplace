@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider, BrowserRouter as Router, Routes, R
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Home from './pages/Home'
-import { Container } from '@chakra-ui/react'
+import { Container, Box } from '@chakra-ui/react'
 import Servers from './pages/Servers'
-import Emojis from './pages/Emojis'
+import EmojisPage from './pages/EmojisPage'
 import BotDetail from './pages/BotDetailPage'
 import BotListPage from './pages/BotListPage'
 
@@ -38,7 +38,7 @@ import BotListPage from './pages/BotListPage'
 function App() {
 
   return (
-    <Container maxW='10xl' bg='discord.900'>
+    <Box maxW='10xl' bg='discord.900'>
       {/* <Header></Header> */}
       {/* <RouterProvider router={router}/> */}
       {/* <Footer></Footer> */}
@@ -51,11 +51,12 @@ function App() {
           <Route path='bots' element={<BotListPage />}/>
           <Route path='bots/:botId' element={<BotDetail />} />
           <Route path='servers' element={<Servers />} />
-          <Route path='emojis' element={<Emojis />} />
+          <Route path='emojis' element={<EmojisPage />} />
+          <Route path='emojis/:emojiTag' element={<EmojisPage />} />
         </Routes>
         <Footer />
       </Router>
-    </Container>
+    </Box>
   )
 }
 

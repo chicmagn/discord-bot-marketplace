@@ -4,7 +4,7 @@ const ServerCard = (props: any) => {
         boxShadow: '2px 2px 4px 2px #5865f2',
       };
     return (
-        <Card maxW='xs' variant='outline' bg='discord.900' boxShadow={boxShadowStyle.boxShadow}>
+        <Card maxW='xs' variant='outline' bg='discord.700' boxShadow={boxShadowStyle.boxShadow}>
             <CardBody padding='0px'>
                 <Image
                     src='https://dbl-static.usercontent.prism.gg/a6d5c73fde1e3532031815dfd2031fc1.png'
