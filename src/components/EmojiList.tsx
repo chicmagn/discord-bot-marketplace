@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Image, Text, Center, VStack } from "@chakra-ui/react"
+import { Grid, Image, Text, Center, VStack } from "@chakra-ui/react"
 
 const EmojiList = (props: any) => {
     const emojis = props.emojis;

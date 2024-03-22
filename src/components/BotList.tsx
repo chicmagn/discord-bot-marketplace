@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import BotCard from "./BotCard";
-import { Container, Center, SimpleGrid, Text } from "@chakra-ui/react";
+import { Container, Center, SimpleGrid } from "@chakra-ui/react";
 import { bots } from "../common/mock";
 
-const BotList = (props: any) => {
+const BotList = () => {
     useEffect(()=>{
     }, []);
     return (

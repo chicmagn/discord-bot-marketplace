@@ -1,4 +1,4 @@
-import { Box, Text, Link, VStack, Heading } from "@chakra-ui/react"
+import { Box, Link, VStack } from "@chakra-ui/react"
 import { emojiCategoryList } from "../common/mock"
 import { useNavigate } from "react-router-dom"
 

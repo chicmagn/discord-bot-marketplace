@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Flex, HStack, Heading, VStack } from "@chakra-ui/react"
+import {  Flex, Heading, VStack } from "@chakra-ui/react"
 import EmojiList from "../components/EmojiList"
 import EmojiSidebar from "../components/EmojiSidebar"
 import { useParams } from "react-router-dom"

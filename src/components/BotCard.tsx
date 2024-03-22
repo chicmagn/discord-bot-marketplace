@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Image, Text, Stack, Heading, Divider, ButtonGroup, Button, HStack, Flex, Tag, Spacer } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter, Image, Text, Stack, ButtonGroup, Button, HStack, Tag } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 const BotCard = (props: any) => {
     const navigate = useNavigate();

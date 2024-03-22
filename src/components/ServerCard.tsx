@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardBody, CardFooter, Image, Text, Stack, Heading, Divider, ButtonGroup, Button, HStack, Flex, Tag, Spacer } from '@chakra-ui/react'
-const ServerCard = (props: any) => {
+import { Card, CardBody, CardFooter, Image, Text, Stack, ButtonGroup, Button, Flex, Tag, Spacer } from '@chakra-ui/react'
+const ServerCard = () => {
     const boxShadowStyle = {
         boxShadow: '2px 2px 4px 2px #5865f2',
       };

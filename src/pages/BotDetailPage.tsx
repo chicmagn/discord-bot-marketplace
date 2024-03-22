@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react"
 
 const BotDetailPage = () => {
     return (

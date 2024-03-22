@@ -1,4 +1,4 @@
-import { Center, Container, Image, VStack, Text, InputGroup, InputLeftElement, Input, InputRightElement, CheckboxIcon, HStack, Tag, Box } from "@chakra-ui/react"
+import { Center, Image, VStack, Text, InputGroup, InputLeftElement, Input, InputRightElement, CheckboxIcon, HStack, Tag, Box } from "@chakra-ui/react"
 import discordLogo from '/discord.svg'
 import { botCategoryList } from "../common/mock"
 import BotList from "../components/BotList"
@@ -32,11 +32,11 @@ const Home = () => {
                     ))}
                 </HStack>
                 <Text fontSize='4xl' color='white'>Top Bots</Text>
-                <BotList search={'top'}/>
+                <BotList />
                 <Text fontSize='4xl' color='white'>New Bots</Text>
-                <BotList search={'top'}/>
+                <BotList />
                 <Text fontSize='4xl' color='white'>Largest Servers</Text>
-                <ServerList search={'top'}/>
+                <ServerList />
             </VStack>
         </Box>
     )
