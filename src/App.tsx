@@ -8,51 +8,29 @@ import Servers from './pages/Servers'
 import EmojisPage from './pages/EmojisPage'
 import BotDetail from './pages/BotDetailPage'
 import BotListPage from './pages/BotListPage'
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Body/>,
-//     children: [{
-//       path: 'home',
-//       element: <Home/>,
-//     },{
-//       path: 'bots',
-//       element: <Bots/>,
-//       children: [
-//         {
-//           path: 'bots/:botId',
-//           element: <BotDetail/>
-//         }
-//       ]
-//     },{
-//       path: 'servers',
-//       element: <Servers/>
-//     },{
-//       path: 'emojis',
-//       element: <Emojis/>
-//     }]
-//   }
-// ])
+import CallbackPage from './pages/CallbackPage'
+import ServerDetail from './pages/ServerDetailPage'
+import BotMyListPage from './pages/BotMyListPage'
+import BotAddPage from './pages/BotAddPage'
 
 function App() {
 
   return (
     <Box maxW='10xl' bg='discord.900'>
-      {/* <Header></Header> */}
-      {/* <RouterProvider router={router}/> */}
-      {/* <Footer></Footer> */}
       <Router>
         <Header />
-        {/* <Body /> */}
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='home' element={<Home />} />
           <Route path='bots' element={<BotListPage />}/>
+          <Route path='bots/mine' element={<BotMyListPage />}/>
+          <Route path='bots/add' element={<BotAddPage />}/>
           <Route path='bots/:botId' element={<BotDetail />} />
           <Route path='servers' element={<Servers />} />
+          <Route path='servers/:serverId' element={<ServerDetail />} />
           <Route path='emojis' element={<EmojisPage />} />
           <Route path='emojis/:emojiTag' element={<EmojisPage />} />
+          <Route path='/callback' element={<CallbackPage/>}/>
         </Routes>
         <Footer />
       </Router>

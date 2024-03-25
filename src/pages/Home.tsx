@@ -3,7 +3,10 @@ import discordLogo from '/discord.svg'
 import { botCategoryList } from "../common/mock"
 import BotList from "../components/BotList"
 import ServerList from "../components/ServerList"
+import { useCookies } from "react-cookie"
 const Home = () => {
+    const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
+
     return (
         <Box maxW='full' className="homePage" p='1.5rem' >
             <VStack>
