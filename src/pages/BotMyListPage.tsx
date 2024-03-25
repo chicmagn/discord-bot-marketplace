@@ -4,7 +4,7 @@ const BotMyListPage =()=> {
     return (
         <VStack maxW='full' p='1.5rem' >
             <Text fontSize='4xl' color='white'>My Bots</Text>
-            <BotList/>
+            <BotList search='mine'/>
         </VStack>
     )
 }

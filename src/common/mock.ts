@@ -1,3 +1,4 @@
+
 export const botCategoryList = [
     'Verification', 'Moderator', 'Music', 'Fun', 'Gaming'
 ]

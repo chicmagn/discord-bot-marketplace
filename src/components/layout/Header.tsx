@@ -1,28 +1,33 @@
 import { Link } from 'react-router-dom';
 import { Container, HStack, Flex, Image, Spacer, Text} from "@chakra-ui/react";
-import { Avatar, AvatarBadge, AvatarGroup, Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react'
-import { PhoneIcon, AddIcon, WarningIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { Avatar, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import discordLogo from '/discord.svg'
 import communeLogo from '/logo.svg'
 import githubLogo from '/github.svg'
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useCookies } from "react-cookie"
+import { useNavigate } from 'react-router-dom';
 
 const Header = ()=> {
     const url = `${import.meta.env.VITE_DISCORD_AUTH_URL}`;
-    console.log(url)
 
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
     const [avatar, setAvatar] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const logout = useCallback(()=>{
+        setIsLoggedIn(false);
+        setCookie('commune_bot_marketplace', null);
+    }, []);
 
     useEffect(()=> {
         let userInfo = null;
         if (cookie['commune_bot_marketplace']){
             setIsLoggedIn(true);
             userInfo = cookie['commune_bot_marketplace'];
-            console.log(userInfo)
             setUsername(userInfo.username);
             if (userInfo.avatar) {
                 const avatarSrc = `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png?size=256`;
@@ -49,8 +54,8 @@ const Header = ()=> {
                     <Link to='/bots'><Text color='white'>Bots</Text></Link>
                     <Link to='/servers'><Text color='white'>Servers</Text></Link>
                     <Link to='/emojis'><Text color='white'>Emojis</Text></Link>
-                    <Link to='/addserver'><Text color='white'>Add Your Server</Text></Link>
-                    <Link to='/addbot'><Text color='white'>Add Your Bot</Text></Link>
+                    <Link to='/servers/add'><Text color='white'>Add Your Server</Text></Link>
+                    <Link to='/bots/add'><Text color='white'>Add Your Bot</Text></Link>
                     <Link to='https://github.com/chicmagn/discord-bot-marketplace'><HStack><Image src={githubLogo} w='1rem' h='1rem'/><Text color='white'>Source Code</Text></HStack></Link>
                     {isLoggedIn?
                         (
@@ -61,10 +66,10 @@ const Header = ()=> {
                                         <Text>{username}{<ChevronDownIcon/>}</Text>
                                     </MenuButton>
                                     <MenuList>
-                                        <MenuItem>My Servers</MenuItem>
-                                        <MenuItem>My Bots</MenuItem>
-                                        <MenuItem>Submit Bot</MenuItem>
-                                        <MenuItem>Logout</MenuItem>
+                                        <MenuItem onClick={()=> navigate('/servers/mine')}>My Servers</MenuItem>
+                                        <MenuItem onClick={()=> navigate('/bots/mine')}>My Bots</MenuItem>
+                                        <MenuItem onClick={()=> navigate('/bots/add')}>Submit Bot</MenuItem>
+                                        <MenuItem onClick={logout}>Logout</MenuItem>
                                     </MenuList>
                                 </Menu>
                             </HStack>

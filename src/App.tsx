@@ -27,6 +27,8 @@ function App() {
           <Route path='bots/add' element={<BotAddPage />}/>
           <Route path='bots/:botId' element={<BotDetail />} />
           <Route path='servers' element={<Servers />} />
+          <Route path='servers/mine' element={<Servers />} />
+          <Route path='servers/add' element={<Servers />} />
           <Route path='servers/:serverId' element={<ServerDetail />} />
           <Route path='emojis' element={<EmojisPage />} />
           <Route path='emojis/:emojiTag' element={<EmojisPage />} />

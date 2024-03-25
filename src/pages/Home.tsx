@@ -35,9 +35,9 @@ const Home = () => {
                     ))}
                 </HStack>
                 <Text fontSize='4xl' color='white'>Top Bots</Text>
-                <BotList />
+                <BotList search='top'/>
                 <Text fontSize='4xl' color='white'>New Bots</Text>
-                <BotList />
+                <BotList search='new'/>
                 <Text fontSize='4xl' color='white'>Largest Servers</Text>
                 <ServerList />
             </VStack>
