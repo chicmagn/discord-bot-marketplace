@@ -26,7 +26,8 @@ app.use(cors({ origin: '*' }));
 const port = process.env.SERVER_PORT || 3000;
 
 app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname + '/build/index.html'));
+    // res.sendFile(path.join(__dirname + '/dist/index.html'));
+    res.status(200).send({success: true, msg: 'Hello Commune fam, this is a message from bot marketplace server.'})
 });
 
 const getApplicationInfo = async (token, appId)=>{
