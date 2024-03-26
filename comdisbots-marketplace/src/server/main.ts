@@ -2,11 +2,11 @@ import express from "express";
 import ViteExpress from "vite-express";
 import bodyParser from "body-parser";
 import axios from "axios";
-
+import cors from "cors";
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors({ origin: '*' }));
 import Datastore from "nedb";
 
 // const Datastore = require('nedb');
