@@ -38,7 +38,7 @@ const Header = ()=> {
                 setAvatar(`https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`);
             }
         }
-    }, []);
+    }, [cookie]);
 
     return (
         <Container className='header' maxW='full' h='5.5rem' bg='discord.700' p='1.5rem' boxShadow='base'>
@@ -54,8 +54,8 @@ const Header = ()=> {
                     <Link to='/bots'><Text color='white'>Bots</Text></Link>
                     <Link to='/servers'><Text color='white'>Servers</Text></Link>
                     <Link to='/emojis'><Text color='white'>Emojis</Text></Link>
-                    <Link to='/servers/add'><Text color='white'>Add Your Server</Text></Link>
-                    <Link to='/bots/add'><Text color='white'>Add Your Bot</Text></Link>
+                    {isLoggedIn && <Link to='/servers/add'><Text color='white'>Add Your Server</Text></Link>}
+                    {isLoggedIn && <Link to='/bots/add'><Text color='white'>Add Your Bot</Text></Link>}
                     <Link to='https://github.com/chicmagn/discord-bot-marketplace'><HStack><Image src={githubLogo} w='1rem' h='1rem'/><Text color='white'>Source Code</Text></HStack></Link>
                     {isLoggedIn?
                         (
