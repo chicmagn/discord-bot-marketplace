@@ -32,7 +32,7 @@ function App() {
             <Route path='servers/:serverId' element={<ServerDetail />} />
             <Route path='emojis' element={<EmojisPage />} />
             <Route path='emojis/:emojiTag' element={<EmojisPage />} />
-            <Route path='/callback' element={<CallbackPage/>}/>
+            <Route path='callback' element={<CallbackPage/>}/>
           </Routes>
           <Footer />
         </Router>
