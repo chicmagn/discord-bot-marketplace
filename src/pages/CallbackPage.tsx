@@ -7,6 +7,7 @@ import { Center, Heading } from "@chakra-ui/react";
 const CallbackPage = () => {
     const navigate = useNavigate();
     const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
+    console.log(cookie)
     const getInfo = async(code: any)=> {
         try {
             const options = new URLSearchParams({

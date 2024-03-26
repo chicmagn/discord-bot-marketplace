@@ -1,5 +1,5 @@
 import { Box, Code , Heading, VStack, Text, Center, Spacer, Divider, Input, useToast , Textarea, HStack, Button} from "@chakra-ui/react"
-import { useCallback, useState } from "react"
+import { useCallback, useState, useEffect } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -18,10 +18,8 @@ const BotAddPage = () => {
     const [inviteLink, setInviteLink] = useState('');
     const [serverInvite, setServerInvite] = useState('');
     // const [tags, setTags] = useState<string[]>([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(()=> {
-        let userInfo = null;
         console.log(cookie)
         if (!cookie['commune_bot_marketplace']){
             navigate('/home');
