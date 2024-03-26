@@ -4,13 +4,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 require('dotenv').config();
-
+// const discord = require('discord.js')
 const Datastore = require('nedb');
 
 const botsDB = new Datastore({ filename: 'db/bots.db', autoload: true });
 const serverDB = new Datastore({ filename: 'db/servers.db', autoload: true });
 const emojiDB = new Datastore({ filename: 'db/emojis.db', autoload: true });
 
+// const discordClient = new discord.Client();
 botsDB.loadDatabase();
 serverDB.loadDatabase();
 emojiDB.loadDatabase();
@@ -26,31 +27,67 @@ const port = process.env.SERVER_PORT || 3000;
 
 app.get('/', (req, res) => {
     // res.sendFile(path.join(__dirname + '/build/index.html'));
-    res.send({success: true, status: 200});
 });
 
+const getApplicationInfo = async (token, appId)=>{
+    const response = await axios.get(`https://discord.com/api/v9/applications/${appId}`, {
+        headers: {
+            authorization: `Bot ${token}`
+        }
+    });
+
+    return response.data;
+}
+
+app.get('/bot', async (req, res)=> {
+    const info = await getApplicationInfo(req.query.token, req.query.appId);
+    res.status(200).send(info);
+});
+
+app.post('/bot/upvote', async(req, res)=> {
+    const { botId } = req.body;
+    botsDB.findOne({clientID: botId}, (err, doc)=> {
+        if (err) {
+            res.status(500).send({success: false, msg: err})
+        } else {
+            const vote = doc['vote'];
+            doc[vote] = vote + 1;
+            botsDB.update({clientID: botId}, {$set: {vote: vote + 1}}, {},  (error, numReplaced)=> {
+                if (error) {
+                    res.status(500).send({success: false, msg: error})
+                } else {
+                    res.status(200).send({success: true});
+                }
+            });
+        }
+    })
+})
+
 app.get('/bots', (req, res)=>{
+    console.log(req.query)
     const {search, user} = req.query;
     let filter = {}
 
     if (search === 'mine')
         filter = {
-            userid: user
+            "owner.id" : user
         }
     botsDB.find(filter, (err, docs)=> {
         if (err) {
             res.status(500).send({success: false, msg: err});
         } else {
-            console.log(docs)
             res.status(200).send({success: true, bots: docs});
         }
     });
 });
 
-app.post('/bot/add', (req, res) => {
-    const {botID, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, tags, avatar, email, userid, username, display} = req.body;
+app.post('/bot/add', async (req, res) => {
+    const { botToken, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite} = req.body;
+    const { name, icon, description: appDesc, type, cover_image: coverImage, bot, summary, tags, owner } = await getApplicationInfo(botToken, clientID);
+    
     botsDB.insert({
-        botID, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, avatar, email, userid, username, display, tags: tags.join(',')
+        botToken, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, 
+        name, icon, appDesc, type, coverImage, bot, summary, tags, owner, vote: 0
     }, (err)=> {
         if (err)
             res.status(200).send({success: false, msg: err});

@@ -1,9 +1,12 @@
-import { Container, Heading } from "@chakra-ui/react"
+import { Container, Heading, Center } from "@chakra-ui/react"
 
 const Servers =()=> {
     return (
-        <Container maxW='full'>
-            <Heading color='white'> Coming Soon</Heading>
+        <Container maxW='full' p={'1.5rem'}>
+            <Center>
+                <Heading color='white'> Coming Soon</Heading>
+            </Center>
+            
         </Container>
     )
 }

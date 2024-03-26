@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -7,7 +7,7 @@ import { Center, Heading } from "@chakra-ui/react";
 const CallbackPage = () => {
     const navigate = useNavigate();
     const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
-
+    console.log(cookie)
     const getInfo = async(code: any)=> {
         try {
             const options = new URLSearchParams({
@@ -16,20 +16,19 @@ const CallbackPage = () => {
                 code,
                 grant_type: 'authorization_code',
                 redirect_uri: import.meta.env.VITE_DISCORD_REDIRECT_URL,
-                scope: 'identify'
+                scope: 'identify email'
             });
-            console.log(options)
             const result = await axios.post('https://discord.com/api/oauth2/token', options);
             const response = await axios.get('https://discord.com/api/users/@me', {
                 headers: {
                     authorization: `${result.data.token_type} ${result.data.access_token}`
                 }
             });
+            
             if (response.data) {
                 setCookie('commune_bot_marketplace', response.data)
                 navigate('/home');
             }
-            
         } catch (error) {
             console.log(error);
         }

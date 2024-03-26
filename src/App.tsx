@@ -12,31 +12,32 @@ import CallbackPage from './pages/CallbackPage'
 import ServerDetail from './pages/ServerDetailPage'
 import BotMyListPage from './pages/BotMyListPage'
 import BotAddPage from './pages/BotAddPage'
-
+import SharedStateContext from './common/ShareState.ts'
 function App() {
-
   return (
-    <Box maxW='10xl' bg='discord.900'>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='home' element={<Home />} />
-          <Route path='bots' element={<BotListPage />}/>
-          <Route path='bots/mine' element={<BotMyListPage />}/>
-          <Route path='bots/add' element={<BotAddPage />}/>
-          <Route path='bots/:botId' element={<BotDetail />} />
-          <Route path='servers' element={<Servers />} />
-          <Route path='servers/mine' element={<Servers />} />
-          <Route path='servers/add' element={<Servers />} />
-          <Route path='servers/:serverId' element={<ServerDetail />} />
-          <Route path='emojis' element={<EmojisPage />} />
-          <Route path='emojis/:emojiTag' element={<EmojisPage />} />
-          <Route path='/callback' element={<CallbackPage/>}/>
-        </Routes>
-        <Footer />
-      </Router>
-    </Box>
+    <SharedStateContext.Provider value={{curBot: ''}}>
+      <Box maxW='10xl' bg='discord.900'>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='home' element={<Home />} />
+            <Route path='bots' element={<BotListPage />}/>
+            <Route path='bots/mine' element={<BotMyListPage />}/>
+            <Route path='bots/add' element={<BotAddPage />}/>
+            <Route path='bots/:botId' element={<BotDetail />} />
+            <Route path='servers' element={<Servers />} />
+            <Route path='servers/mine' element={<Servers />} />
+            <Route path='servers/add' element={<Servers />} />
+            <Route path='servers/:serverId' element={<ServerDetail />} />
+            <Route path='emojis' element={<EmojisPage />} />
+            <Route path='emojis/:emojiTag' element={<EmojisPage />} />
+            <Route path='/callback' element={<CallbackPage/>}/>
+          </Routes>
+          <Footer />
+        </Router>
+      </Box>
+    </SharedStateContext.Provider>
   )
 }
 

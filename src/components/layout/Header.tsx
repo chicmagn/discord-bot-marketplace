@@ -25,6 +25,7 @@ const Header = ()=> {
 
     useEffect(()=> {
         let userInfo = null;
+        console.log(cookie)
         if (cookie['commune_bot_marketplace']){
             setIsLoggedIn(true);
             userInfo = cookie['commune_bot_marketplace'];
@@ -37,7 +38,6 @@ const Header = ()=> {
                 setAvatar(`https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`);
             }
         }
-        
     }, []);
 
     return (
@@ -66,8 +66,8 @@ const Header = ()=> {
                                         <Text>{username}{<ChevronDownIcon/>}</Text>
                                     </MenuButton>
                                     <MenuList>
-                                        <MenuItem onClick={()=> navigate('/servers/mine')}>My Servers</MenuItem>
                                         <MenuItem onClick={()=> navigate('/bots/mine')}>My Bots</MenuItem>
+                                        <MenuItem onClick={()=> navigate('/servers/mine')}>My Servers</MenuItem>
                                         <MenuItem onClick={()=> navigate('/bots/add')}>Submit Bot</MenuItem>
                                         <MenuItem onClick={logout}>Logout</MenuItem>
                                     </MenuList>

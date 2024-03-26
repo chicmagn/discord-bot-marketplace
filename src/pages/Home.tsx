@@ -3,10 +3,15 @@ import discordLogo from '/discord.svg'
 import { botCategoryList } from "../common/mock"
 import BotList from "../components/BotList"
 import ServerList from "../components/ServerList"
-import { useCookies } from "react-cookie"
+// import { useCookies } from "react-cookie"
+// import axios from "axios"
 const Home = () => {
-    const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
+    // const [cookie, setCookie] = useCookies(["commune_bot_marketplace"]);
+    const handleSearch = (e: any)=> {
+        if (e.key == 13) {
 
+        }
+    }
     return (
         <Box maxW='full' className="homePage" p='1.5rem' >
             <VStack>
@@ -22,7 +27,7 @@ const Home = () => {
                                 >
                                 🔎
                             </InputLeftElement>
-                            <Input placeholder='Search for your bots, discord, emojis' color='white'/>
+                            <Input placeholder='Search for your bots, discord, emojis' color='white' onKeyDown={handleSearch}/>
                             <InputRightElement>
                                 <CheckboxIcon color='green.500' />
                             </InputRightElement>
@@ -31,7 +36,7 @@ const Home = () => {
                 </Center>
                 <HStack mb={8}>
                     {botCategoryList.map((element, index) => (
-                       <Tag variant='solid' fontSize='xl' color='white' bg='discord.100' key={index}>{element}</Tag>
+                       <Tag variant='solid' fontSize='md' color='white' bg='discord.100' key={index}>{element}</Tag>
                     ))}
                 </HStack>
                 <Text fontSize='4xl' color='white'>Top Bots</Text>

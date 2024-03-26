@@ -1,6 +1,6 @@
 
 export const botCategoryList = [
-    'Verification', 'Moderator', 'Music', 'Fun', 'Gaming'
+    "Crypto","Moderation","Meme","Multipurpose"//"Fun","Gaming","Economy","Social","Web Dashboard","Utility","Ticket","Levelling","Fortnite","Anime","PUBG","Apex Legends","CSGO","Minecraft","Overwatch","Rocket League","LFG","OSU!","Logging","Roleplay","Livestreams","Multiple Languages","Automod","Autorole","Verification","Roblox","Among Us","Fall Guys","Reaction Roles","League of Legends","Pokémon","Giveaway","Twitch","YouTube","Genshin Impact"
 ]
 
 export const emojiCategoryList = [

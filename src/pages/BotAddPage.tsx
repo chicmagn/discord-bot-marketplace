@@ -1,4 +1,4 @@
-import { Box, Code , Heading, VStack, Text, Center, Spacer, Divider, Input, useToast , Textarea, Select, HStack, Button, SimpleGrid, Tag } from "@chakra-ui/react"
+import { Box, Code , Heading, VStack, Text, Center, Spacer, Divider, Input, useToast , Textarea, HStack, Button} from "@chakra-ui/react"
 import { useCallback, useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const BotAddPage = () => {
     const toast = useToast();
     const [cookie] = useCookies(["commune_bot_marketplace"]);
     const userInfo = cookie['commune_bot_marketplace'];
-    const [botID, setBotID] = useState('');
+    const [botToken, setBotToken] = useState('');
     const [clientID, setClientID] = useState('');
     const [shortDesc, setShortDesc] = useState('');
     const [desc, setDesc] = useState('');
@@ -17,11 +17,11 @@ const BotAddPage = () => {
     const [website, setWebsite] = useState('');
     const [inviteLink, setInviteLink] = useState('');
     const [serverInvite, setServerInvite] = useState('');
-    const [tags, setTags] = useState<string[]>([]);
+    // const [tags, setTags] = useState<string[]>([]);
 
-    const handleBotID = (e: any)=> {
+    const handleBotToken = (e: any)=> {
         const v = e.target.value;
-        setBotID(v);
+        setBotToken(v);
     };
 
     const handleClientId = (e: any) => {
@@ -59,22 +59,17 @@ const BotAddPage = () => {
         setServerInvite(v);
     }
 
-    const handleTags = (e: any) => {
-        const v = e.target.value;
-        const newTags = [...tags];
-        newTags.push(v);
-        setTags(newTags);
-    }
+    // const handleTags = (e: any) => {
+    //     const v = e.target.value;
+    //     const newTags = [...tags];
+    //     newTags.push(v);
+    //     setTags(newTags);
+    // }
 
     const submit = useCallback(()=>{
         
         const options = {
-            botID, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, tags,
-            avatar:  userInfo['avatar'],
-            email: userInfo['email'],
-            userid: userInfo['id'],
-            username: userInfo['username'],
-            display: userInfo['global_name']
+            botToken, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite,// tags,
         }
         // console.log(options)
         axios.post( `${import.meta.env.VITE_SERVER_URL}/bot/add`, options).then((data: any)=>{
@@ -102,7 +97,7 @@ const BotAddPage = () => {
         }).catch((error: Error)=>{
             console.log(error)
         })
-    }, [botID, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, tags, userInfo]);
+    }, [botToken, clientID, shortDesc, desc, cmdPrefix, website, inviteLink, serverInvite, userInfo]);
 
     return (
         <Box maxW='full' p='1.5rem' >
@@ -120,14 +115,14 @@ const BotAddPage = () => {
                     <Divider mt={5} mb={5} colorScheme="whatsapp"></Divider>
                     <HStack w={'full'}>
                         <Text color={'red'}>*</Text>
-                        <Text w={200} size={'md'} color={'white'}>Bot User ID</Text>
-                        <Input placeholder='Bot User ID' color={'white'} bg={'gray.700'} onChange={handleBotID}/>
+                        <Text w={200} size={'md'} color={'white'}>Bot Token</Text>
+                        <Input placeholder='MTIyMTgwODg2MDU4Nzc1MzU0NA.Gx4iG6.WeyXUuXo0ZwGkvZkRElNDWIaZzHrbh-PGH6ZUA' color={'white'} bg={'gray.700'} onChange={handleBotToken}/>
                     </HStack>
                     <Divider mt={5} mb={5}></Divider>
                     <HStack w={'full'}>
                         <Text color={'red'}>*</Text>
                         <Text w={200} size={'md'} color={'white'}>Client ID</Text>
-                        <Input placeholder='Client ID' color={'white'} bg={'gray.700'} onChange={handleClientId}/>
+                        <Input placeholder='Client ID: 1221808860587753544' color={'white'} bg={'gray.700'} onChange={handleClientId}/>
                     </HStack>
                     <Divider mt={5} mb={5}></Divider>
                     <HStack w={'full'}>
@@ -166,7 +161,7 @@ const BotAddPage = () => {
                         <Input placeholder='Server Invite' color={'white'} bg={'gray.700'} onChange={handleServerInvite}/>
                     </HStack>
                     <Divider mt={5} mb={5}></Divider>
-                    <HStack w={'full'}>
+                    {/* <HStack w={'full'}>
                         <Text color={'red'}>*</Text>
                         <Text w={170} size={'md'} color={'white'}>Tags</Text>
                         <VStack align={'start'}>
@@ -183,7 +178,7 @@ const BotAddPage = () => {
                             </SimpleGrid>
                         </VStack>
                     </HStack>
-                    <Divider mt={5} mb={5}></Divider>
+                    <Divider mt={5} mb={5}></Divider> */}
                     <Button colorScheme="blue" onClick={submit}>Submit</Button>
                 </VStack>
             </Center>

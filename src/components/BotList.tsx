@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState} from "react"
 import BotCard from "./BotCard";
 import { Container, Center, SimpleGrid, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -14,34 +14,34 @@ const BotList = (props: any) => {
         let url = '';
         if (props.search === 'mine')
             url = `${import.meta.env.VITE_SERVER_URL}/bots?search=${props.search}&user=${cookie['commune_bot_marketplace']['id']}`
-
+        else 
+            url = `${import.meta.env.VITE_SERVER_URL}/bots?search=${props.search}`;
         axios.get(url).then((response: any)=> {
             const data = response.data;
             if (data.success){
                 // console.log(data.bots)
                 setBots(data.bots);
-                toast({
-                    title: 'Your bots',
-                    description: "Your bots are loaded.",
-                    status: 'success',
-                    duration: 6000,
-                    isClosable: true,
-                });
+                // toast({
+                //     title: 'Your bots',
+                //     description: "Your bots are loaded.",
+                //     status: 'success',
+                //     duration: 6000,
+                //     isClosable: true,
+                // });
             } 
             else {
-                toast({
-                    title: 'Failure',
-                    description: data.msg,
-                    status: 'error',
-                    duration: 6000,
-                    isClosable: true,
-                });
+                // toast({
+                //     title: 'Failure',
+                //     description: data.msg,
+                //     status: 'error',
+                //     duration: 6000,
+                //     isClosable: true,
+                // });
             }
         }).catch((error:Error)=>{
-            console.log(error)
             toast({
                 title: 'Failure',
-                description: 'Error',
+                description: error.message,
                 status: 'error',
                 duration: 6000,
                 isClosable: true,
@@ -64,8 +64,8 @@ const BotList = (props: any) => {
             {bots.length > 0 && (
                 <Center>
                     <SimpleGrid columns={4} spacing={10}>
-                        {[...bots].map((item, index) => (
-                            <BotCard key={index} bot={item}/>
+                        {[...bots].map((bot: any, index: any) => (
+                            <BotCard key={index} bot={bot}/>
                         ))}
                     </SimpleGrid>
                 </Center>
