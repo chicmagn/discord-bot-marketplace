@@ -18,6 +18,15 @@ const BotAddPage = () => {
     const [inviteLink, setInviteLink] = useState('');
     const [serverInvite, setServerInvite] = useState('');
     // const [tags, setTags] = useState<string[]>([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(()=> {
+        let userInfo = null;
+        console.log(cookie)
+        if (!cookie['commune_bot_marketplace']){
+            navigate('/home');
+        }
+    }, []);
 
     const handleBotToken = (e: any)=> {
         const v = e.target.value;
